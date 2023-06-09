@@ -3,32 +3,23 @@ import pandas as pd
 sovpad_vkusi = pd.read_excel('TABAKI2.xlsx')
 black_bern = pd.read_excel('6ea62e8d25dba044.xlsx')
 
-sovpad_vkusi
+print('## Сочетания вкусов табака фирмы BlackBern ##')
+print('Введите первый вкус (ВЫБОР ИЗ НАЗВАНИЙ)')
+first_obj = input()
+print('Введите второй вкус (ВЫБОР ИЗ НАЗВАНИЙ)')
+second_obj = input()
+# ЗДЕСЬ ПОЛУЧАЕМ ВКУС(НАЗВАНИЕ СТОЛБЦА) ПО ЕЁ СОДЕРЖАНИЮ
+try:
+    name_of_col1 = black_bern.columns[black_bern.isin([first_obj]).any()][0] # [0] используется, чтобы выбрать первый элемент списка (если он есть)
+    name_of_col2 = black_bern.columns[black_bern.isin([second_obj]).any()][0] 
+except:
+    print(f"\"{first_obj}\" или \"{second_obj}\" не найден в таблице")
+print(name_of_col1)
+print(name_of_col2)
+# найти индекс первой строки с name_of_col1 в первом столбце
+idx = sovpad_vkusi[sovpad_vkusi.iloc[:, 0] == name_of_col1].index[0]
+# найти название первого столбца, содержащего name_of_col2
+col_name = sovpad_vkusi.columns[sovpad_vkusi.columns.str.contains(name_of_col2)][0]
+result = sovpad_vkusi.loc[idx, col_name]
 
-#col_shugar = sovpad_vkusi['Сладкий']
-col_sour = sovpad_vkusi['Кислый']
-col_fresh = sovpad_vkusi['Свежий']
-col_grassy = sovpad_vkusi['Травянистый']
-col_tart = sovpad_vkusi['Терпкий']
-col_spicy = sovpad_vkusi['Пряный']
-col_coffee = sovpad_vkusi['Кофейный']
-col_gastronomy = sovpad_vkusi['Гастрономия']
-col_alcoholic = sovpad_vkusi['Алкогольный']
-col_chocolate = sovpad_vkusi['Шоколадный']
-col_pastries = sovpad_vkusi['Выпечка']
-col_nutty = sovpad_vkusi['Ореховый']
-col_bitter = sovpad_vkusi['Горький']
-col_ice = sovpad_vkusi['Лёд']
-col_mint = sovpad_vkusi['Мята']
-col_coniferous = sovpad_vkusi['Хвойный']
-col_sugary = sovpad_vkusi['Приторный']
-
-# Будем искать вкусы, у который "да"
-#result = sovpad_vkusi.columns[sovpad_vkusi.isin(['Да']).any()]
-#print(result)
-has_yes = sovpad_vkusi.isin(['Да']).any()
-col = has_yes.any().idxmax()
-row = has_yes[col].idxmax()
-result = sovpad_vkusi.loc[row, col]
-
-print(result)
+print(f"Можно ли смешивать?\n Ответ: {result}")
