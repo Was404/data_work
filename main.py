@@ -12,10 +12,10 @@ second_obj = input()
 try:
     name_of_col1 = black_bern.columns[black_bern.isin([first_obj]).any()][0] # [0] используется, чтобы выбрать первый элемент списка (если он есть)
     name_of_col2 = black_bern.columns[black_bern.isin([second_obj]).any()][0] 
+    print(name_of_col1)
+    print(name_of_col2)
 except:
     print(f"\"{first_obj}\" или \"{second_obj}\" не найден в таблице")
-print(name_of_col1)
-print(name_of_col2)
 # найти индекс первой строки с name_of_col1 в первом столбце
 idx = sovpad_vkusi[sovpad_vkusi.iloc[:, 0] == name_of_col1].index[0]
 # найти название первого столбца, содержащего name_of_col2
