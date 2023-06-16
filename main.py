@@ -1,7 +1,7 @@
 import pandas as pd
 
-sovpad_vkusi = pd.read_excel('TABAKI2.xlsx')
-black_bern = pd.read_excel('6ea62e8d25dba044.xlsx')
+sovpad_vkusi = pd.read_excel('data\TABAKI2.xlsx')
+black_bern = pd.read_excel('data\BlackBern.xlsx')
 
 print('## Сочетания вкусов табака фирмы BlackBern ##')
 print('Введите первый вкус (ВЫБОР ИЗ НАЗВАНИЙ)')
