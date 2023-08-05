@@ -13,7 +13,7 @@ def result(msg):
     # Возвращаем список извлеченных слов
     #print(extracted_words)
     result = []
-    for i in range(len(extracted_words)):
+    for i in range(len(extracted_words[:-1:])):
         exec(f'var_{i} = extracted_words[i]')
         extracted_words[i] = black_bern.columns[black_bern.isin([extracted_words[i]]).any()][0] # [0] используется, чтобы выбрать первый элемент списка (если он есть)
         extracted_words[i+1] = black_bern.columns[black_bern.isin([extracted_words[i+1]]).any()][0] 
