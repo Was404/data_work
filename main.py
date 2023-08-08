@@ -13,7 +13,7 @@ def result(msg):
 
         first = words_list[i]
         second = words_list[i+1]
-        print("INPUT:", first, second)
+        print("INPUT:", first, "|", second)
 
         name_of_col1 = black_bern.columns[black_bern.isin([first]).any()][0]
         name_of_col2 = black_bern.columns[black_bern.isin([second]).any()][0]
@@ -34,7 +34,7 @@ def result(msg):
             if i == len(words_list) - 2:
                 continue
             pepa = words_list[i]
-            print("INPUT:", last, pepa)
+            print("INPUT:", last, "|", pepa)
 
             name_of_col1 = black_bern.columns[black_bern.isin([last]).any()][0]
             name_of_col2 = black_bern.columns[black_bern.isin([pepa]).any()][0]
